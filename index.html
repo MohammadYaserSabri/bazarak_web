@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>بازارک – اپلیکیشن خرید و فروش افغانستان</title>
+  <!-- Persian font (Vazir) & Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/Vazir.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Vazir', 'Tahoma', sans-serif;
+      background-color: #ffffff;
+      color: #1e2b2f;
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* primary color #4ECCA3 */
+    .btn-primary {
+      background-color: #4ECCA3;
+      border: none;
+      border-radius: 3rem;
+      padding: 1rem 2.2rem;
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 8px 16px rgba(78, 204, 163, 0.2);
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      border: 1px solid transparent;
+      text-decoration: none;
+      border: none;
+      outline: none;
+    }
+
+    .btn-primary i {
+      font-size: 1.4rem;
+    }
+
+    .btn-primary:hover {
+      background-color: #3bb88f;
+      box-shadow: 0 10px 22px rgba(78, 204, 163, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .btn-primary:active {
+      transform: translateY(1px);
+      box-shadow: 0 4px 10px rgba(78, 204, 163, 0.2);
+    }
+
+    /* header / hero */
+    header {
+      padding: 1.5rem 0 1rem 0;
+      border-bottom: 1px solid #f0f3f5;
+    }
+
+    .hero-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .logo-icon {
+      font-size: 3.2rem;
+      color: #4ECCA3;
+      background: #e9f9f2;
+      width: 4.5rem;
+      height: 4.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 1.5rem;
+    }
+
+    .app-description-placeholder {
+      background-color: #f8fafc;
+      border: 2px dashed #bdd9d0;
+      border-radius: 2.5rem;
+      padding: 0.7rem 1.8rem;
+      font-size: 1.2rem;
+      color: #1e3b33;
+      min-width: 240px;
+      text-align: center;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+    }
+
+    .app-description-placeholder i {
+      margin-left: 0.5rem;
+      color: #4ECCA3;
+      font-size: 1rem;
+    }
+
+    .slogan {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #1e2b2f;
+      margin: 0.5rem 0 1.2rem 0;
+      line-height: 1.4;
+    }
+
+    .slogan::before {
+      content: "✦";
+      color: #FFA500;
+      margin-left: 0.5rem;
+      font-size: 2rem;
+      font-weight: 300;
+    }
+
+    /* download section */
+    .section-title {
+      font-size: 2rem;
+      font-weight: 600;
+      margin: 2.5rem 0 1.5rem 0;
+      color: #1e2b2f;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      right: 0;
+      width: 70px;
+      height: 4px;
+      background: #4ECCA3;
+      border-radius: 4px;
+    }
+
+    .download-card {
+      background: #f9fdfb;
+      border-radius: 2.5rem;
+      padding: 2rem 1.8rem;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.04);
+      border: 1px solid #ecf7f2;
+      margin-bottom: 3rem;
+    }
+
+    .os-message {
+      font-size: 1.3rem;
+      background: #fff4e5;
+      padding: 1.5rem;
+      border-radius: 2rem;
+      text-align: center;
+      color: #6d4c2c;
+      border-right: 6px solid #FFA500;
+      font-weight: 500;
+    }
+
+    .android-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      justify-content: flex-start;
+      margin-top: 1rem;
+    }
+
+    .apk-btn {
+      background: white;
+      border: 2px solid #4ECCA3;
+      border-radius: 3rem;
+      padding: 1.2rem 2.2rem;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #1e2b2f;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      transition: 0.2s;
+      flex: 1 1 auto;
+      min-width: 220px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    }
+
+    .apk-btn i {
+      color: #4ECCA3;
+      font-size: 1.6rem;
+    }
+
+    .apk-btn:hover {
+      background: #e3f9f0;
+      border-color: #36a881;
+      transform: scale(1.02);
+    }
+
+    /* features placeholder */
+    .features-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin: 3rem 0 2.5rem;
+      justify-content: center;
+    }
+
+    .feature-item {
+      background: #ffffff;
+      border-radius: 2rem;
+      padding: 2rem 1rem;
+      text-align: center;
+      flex: 1 1 180px;
+      min-width: 150px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.02);
+      border: 1px solid #f1f7f5;
+      transition: 0.2s;
+    }
+
+    .feature-item i {
+      font-size: 2.8rem;
+      color: #4ECCA3;
+      background: #ecfaf3;
+      padding: 1rem;
+      border-radius: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .feature-item .placeholder-text {
+      font-size: 1.1rem;
+      color: #5e7a73;
+      background: #f4f9f7;
+      padding: 0.5rem 1rem;
+      border-radius: 3rem;
+      display: inline-block;
+    }
+
+    /* footer */
+    footer {
+      background: #f6fbf9;
+      border-radius: 3rem 3rem 0 0;
+      padding: 2.5rem 1.5rem;
+      margin-top: 3rem;
+      border-top: 1px solid #d6eee5;
+    }
+
+    .footer-placeholder {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem 3rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem 2rem;
+      color: #2f5549;
+    }
+
+    .footer-links span, .footer-links a {
+      cursor: default;
+      font-size: 1.1rem;
+      background: #ecf6f2;
+      padding: 0.5rem 1.5rem;
+      border-radius: 3rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .footer-links a {
+      cursor: pointer;
+      background: #e0f0ea;
+      transition: background 0.2s;
+    }
+
+    .footer-links a:hover {
+      background: #cbe9de;
+    }
+
+    .footer-links i {
+      color: #4ECCA3;
+    }
+
+    .copyright {
+      color: #61877c;
+      font-size: 1rem;
+    }
+
+    /* responsiveness */
+    @media (max-width: 600px) {
+      .hero-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .app-description-placeholder {
+        width: 100%;
+        white-space: normal;
+        justify-content: center;
+      }
+
+      .slogan {
+        font-size: 1.7rem;
+      }
+
+      .btn-primary {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .android-buttons {
+        flex-direction: column;
+      }
+
+      .apk-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .footer-placeholder {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    .text-muted {
+      color: #7e9b92;
+    }
+
+    .mt-2 { margin-top: 1rem; }
+    .mb-2 { margin-bottom: 1rem; }
+    .small-note {
+      font-size: 0.9rem;
+      color: #7e9b92;
+      margin-top: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <!-- logo + placeholder description (filled for test) -->
+      <div class="hero-row">
+        <i class="fas fa-store logo-icon"></i>
+        <!-- short app description (test purpose) -->
+        <span class="app-description-placeholder">
+          <i class="fas fa-tag"></i> بازارک | خرید و فروش آنلاین
+        </span>
+      </div>
+      <!-- slogan and smart download button (auto detects OS) -->
+      <h1 class="slogan">آسان بخر، آسان بفروش</h1>
+      <button class="btn-primary" id="smartDownloadBtn">
+        <i class="fas fa-download"></i> دانلود بازارک
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- download section (detailed options) -->
+    <section id="download">
+      <h2 class="section-title">نسخه‌های دانلود</h2>
+      <div class="download-card" id="download-options">
+        <!-- dynamic content will be injected by JavaScript based on OS -->
+        <div style="text-align: center; padding: 2rem;">
+          <i class="fas fa-spinner fa-pulse fa-2x" style="color: #4ECCA3;"></i>
+          <p class="text-muted">در حال تشخیص سیستم عامل ...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- placeholder features section (filled with dummy text for test) -->
+    <section>
+      <h2 class="section-title">چرا بازارک؟</h2>
+      <div class="features-grid">
+        <div class="feature-item">
+          <i class="fas fa-bolt"></i>
+          <div class="placeholder-text">سرعت بالا</div>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-shield-alt"></i>
+          <div class="placeholder-text">امنیت</div>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-hand-holding-heart"></i>
+          <div class="placeholder-text">پشتیبانی</div>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-chart-line"></i>
+          <div class="placeholder-text">تحلیل بازار</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-placeholder">
+      <div class="footer-links">
+        <!-- WhatsApp contact integrated -->
+        <a href="https://wa.me/93796537362" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-whatsapp"></i> +۹۳۷۹۶۵۳۷۳۶۲
+        </a>
+        <span><i class="fas fa-phone-alt"></i> تماس</span>
+        <span><i class="fas fa-envelope"></i> info@bazark.af</span>
+        <span><i class="fas fa-map-pin"></i> کابل، افغانستان</span>
+      </div>
+      <div class="copyright">
+        <i class="far fa-copyright"></i> بازارک – تمامی حقوق محفوظ است
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      // ---------- CONFIGURABLE LINKS ----------
+      // You can replace these with your actual download URLs
+      var FALLBACK_DOWNLOAD_URL = "/apk/bazark-universal.apk";     // fallback if OS unknown (or your provided link)
+      var DEFAULT_ANDROID_URL = "/apk/bazark-arm64.apk";           // default for Android (you can change to armv7 if preferred)
+      // APK architecture-specific (used in detailed section)
+      var ARM64_URL = "/apk/bazark-arm64.apk";
+      var ARMV7_URL = "/apk/bazark-armv7.apk";
+      // ----------------------------------------
+
+      // Detect OS
+      function detectOS() {
+        const ua = navigator.userAgent || navigator.vendor || window.opera;
+        if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) return 'iOS';
+        if (/android/i.test(ua)) return 'Android';
+        return 'Other';
+      }
+
+      const os = detectOS();
+
+      // Fill the download options card (detailed buttons)
+      function renderDownloadOptions() {
+        const container = document.getElementById('download-options');
+        if (!container) return;
+
+        if (os === 'iOS') {
+          container.innerHTML = `
+            <div class="os-message">
+              <i class="fas fa-exclamation-circle" style="font-size: 2rem; margin-left: 0.8rem; vertical-align: middle;"></i>
+              نسخه iOS فعلاً آماده نیست
+            </div>
+          `;
+        } else {
+          // Android or other — show both APK buttons with placeholder links
+          container.innerHTML = `
+            <div style="margin-bottom: 1.2rem;">
+              <span style="background: #ecf9f2; padding: 0.4rem 1.5rem; border-radius: 3rem; font-size: 1rem;">
+                <i class="fas fa-android" style="color:#4ECCA3;"></i> نسخه‌های اندروید
+              </span>
+            </div>
+            <div class="android-buttons">
+              <a href="${ARM64_URL}" class="apk-btn" rel="noopener noreferrer">
+                <i class="fas fa-microchip"></i> دانلود نسخه ARM64
+              </a>
+              <a href="${ARMV7_URL}" class="apk-btn" rel="noopener noreferrer">
+                <i class="fas fa-mobile-alt"></i> دانلود نسخه ARMv7
+              </a>
+            </div>
+            <p class="small-note">
+              <i class="fas fa-info-circle" style="color:#4ECCA3;"></i> لینک‌ها آزمایشی هستند – بعداً لینک‌های اصلی را جایگزین کنید.
+            </p>
+          `;
+        }
+      }
+
+      renderDownloadOptions();
+
+      // ---------- SMART DOWNLOAD BUTTON ----------
+      var smartBtn = document.getElementById('smartDownloadBtn');
+      if (smartBtn) {
+        smartBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+
+          if (os === 'iOS') {
+            // iOS not available: scroll to message and highlight
+            document.getElementById('download')?.scrollIntoView({ behavior: 'smooth' });
+            // Optional: briefly flash the message
+            const msgBox = document.querySelector('.os-message');
+            if (msgBox) {
+              msgBox.style.transition = 'background 0.3s';
+              msgBox.style.background = '#ffe5b4';
+              setTimeout(() => msgBox.style.background = '#fff4e5', 300);
+            }
+          } 
+          else if (os === 'Android') {
+            // For Android, we use the default APK link (you can change DEFAULT_ANDROID_URL)
+            // In a real scenario you might want to pick based on CPU, but we use a predefined default.
+            window.location.href = DEFAULT_ANDROID_URL;
+          } 
+          else {
+            // Other OS (Windows, Mac, Linux, etc.) – use fallback link
+            window.location.href = FALLBACK_DOWNLOAD_URL;
+          }
+        });
+      }
+
+      // Extra: make the main button not a link but a button, so we keep styling.
+      // Also attach fallback if user clicks on any apk link (they are placeholder)
+      // No action needed, they are standard <a> tags.
+
+      // Optional: smooth scroll for any anchor with hash
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+    })();
+  </script>
+  <!-- small note: the whatsapp number is +93796537362 (without leading zero in link) -->
+</body>
+</html>
